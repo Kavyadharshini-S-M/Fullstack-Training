@@ -1,42 +1,36 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import React from 'react';
 import './App.css';
 
-const AlertButton = ({ message }) => {
-  return (
-    <button
-      onClick={() => alert("Button clicked!")}
-      onDoubleClick={() => alert("Double Click detected!")}
-    >
-      {message}
-    </button>
-  );
+const NotificationButton = ({ label }) => {
+  const handleClick = () => alert("Button has been activated!");
+  const handleDoubleClick = () => alert("Double activation detected!");
+
+  return <button onClick={handleClick} onDoubleClick={handleDoubleClick}>{label}</button>;
 };
 
-const FriendDetails = ({ name, age }) => {
+const ProfileCard = ({ person }) => {
   return (
-    <div>
-      <h2>Friend Information</h2>
-      <p>Name: {name}</p>
-      <p>Age: {age}</p>
+    <div className="profile-card">
+      <h3>Meet {person.name}!</h3>
+      <p>Age: {person.age}</p>
+      <p>Favorite Activity: {person.hobby}</p>
     </div>
   );
 };
 
-const App = () => {
-  const myDetails = { name: "Harini", age: 19 };
-  const friendDetails = { name: "Kavyadharshini", age: 20 };
+const MainApp = () => {
+  const user = { name: "Harini", age: 20, hobby: "Sketching" };
+  const companion = { name: "Kavyadharshini", age: 19, hobby: "Singing" };
 
   return (
-    <div>
-      <h1>Best Friends Forever</h1>
-      <p>"Through thick and thin, always together!"</p>
-      <AlertButton message="Press Me!" />
-      <FriendDetails name={myDetails.name} age={myDetails.age} />
-      <FriendDetails name={friendDetails.name} age={friendDetails.age} />
+    <div className="app-container">
+      <h1>Friendship Circle</h1>
+      <p>"A bond that lasts a lifetime!"</p>
+      <NotificationButton label="Press Me!" />
+      <ProfileCard person={user} />
+      <ProfileCard person={companion} />
     </div>
   );
 };
 
-export default App;
+export default MainApp;
