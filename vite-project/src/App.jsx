@@ -1,45 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-function App() {
-  // Function to log user details
-  const logUserDetails = () => {
-    alert("Hi");
-    const userDetails = {
-      name: "Kavyadharshini S M",
-      dept: "M.Tech cse",
-      rollNo: "8"
-    };
-    console.log("User Details:", userDetails);
-  };
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 
-  // Function to log the current date
-  const logCurrentDate = () => {
-    alert("Hi");
-    const today = new Date().toLocaleDateString();
-    console.log("Current Date:", today);
-  };
-
-  // Function to log a random goal
-  const logGoal = () => {
-    alert("Hi");
-    const Goal = [
-      "To lead a happy life!"
-    ];
-    const randomGoal = Goal[Math.floor(Math.random() * Goal.length)];
-    console.log("Goal:", randomGoal);
-  };
-
+const AlertButton = ({ message }) => {
   return (
-    <div className="container">
-      <h1>Click the buttons to log details in the console</h1>
-      <button onClick={logUserDetails}>Log User Details</button>
-      <button onClick={logCurrentDate}>Log Current Date</button>
-      <button onClick={logGoal}>Log Goals</button>
+    <button
+      onClick={() => alert("Button clicked!")}
+      onDoubleClick={() => alert("Double Click detected!")}
+    >
+      {message}
+    </button>
+  );
+};
+
+const FriendDetails = ({ name, age }) => {
+  return (
+    <div>
+      <h2>Friend Information</h2>
+      <p>Name: {name}</p>
+      <p>Age: {age}</p>
     </div>
   );
-}
+};
+
+const App = () => {
+  const myDetails = { name: "Harini", age: 19 };
+  const friendDetails = { name: "Kavyadharshini", age: 20 };
+
+  return (
+    <div>
+      <h1>Best Friends Forever</h1>
+      <p>"Through thick and thin, always together!"</p>
+      <AlertButton message="Press Me!" />
+      <FriendDetails name={myDetails.name} age={myDetails.age} />
+      <FriendDetails name={friendDetails.name} age={friendDetails.age} />
+    </div>
+  );
+};
 
 export default App;
- 
